@@ -15,7 +15,7 @@ class DuplicatesRemover:
     empty_real = 'Folder(s) should not be empty!'
     folders_same = 'Folders should be different!'
     files_found = '{} files found: {} inside {}"'
-    removed_ok = 'File {} removed OK...'
+    removed_ok = 'File {} removed OK...(same as {})'
     removed_bad = 'File {} not removed! Details: {}'
     version = f'{__version__}'
 
@@ -60,7 +60,8 @@ class DuplicatesRemover:
                                shallow=not deep_check):
                     try:
                         os.remove(target_file_path)  # remove from OS
-                        logger.info(self.removed_ok.format(target_file_path))
+                        logger.info(self.removed_ok.format(target_file_path,
+                                                           source_file_path))
                         target_files.remove(target_file)  # remove from list
                         result["deleted"] += 1
                     except OSError as e:
