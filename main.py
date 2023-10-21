@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 
-from duplicate_remover import DuplicateRemover
+from duplicates_remover import DuplicatesRemover
 from logger import logger
 
 
@@ -21,7 +21,7 @@ def main():
                                      "(where duplicates will be removed)",
                                      init_dir=os.path.dirname(source_folder))
 
-    d = DuplicateRemover()
+    d = DuplicatesRemover()
     logger.info(f"Duplicates remover v{d.version}")
     result = d.delete_duplicate_files(source_folder, target_folder)
     logger.info(f"Finished! "
