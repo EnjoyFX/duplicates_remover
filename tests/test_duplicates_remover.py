@@ -12,6 +12,20 @@ class TestDuplicatesRemover(unittest.TestCase):
         self.duplicates_remover = DuplicatesRemover()
 
     def test_delete_duplicate_files(self):
+        # test with 1) empty passed & 2) the same passed
+        with patch('duplicates_remover.logger') as mock_logger:
+            result = self.duplicates_remover.delete_duplicate_files(
+                "", "", deep_check=True)
+            self.assertEqual(result, {"compared": 0, "deleted": 0})
+            mock_logger.warning.assert_called_with(
+                self.duplicates_remover.empty_passed)
+
+            result = self.duplicates_remover.delete_duplicate_files(
+                "the_same", "the_same", deep_check=True)
+            self.assertEqual(result, {"compared": 0, "deleted": 0})
+            mock_logger.warning.assert_called_with(
+                self.duplicates_remover.folders_same)
+
         # Create temp dirs with test files
         with temp_dir() as source_dir, temp_dir() as target_dir:
             # Create test files in the source and target directories
