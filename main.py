@@ -1,3 +1,4 @@
+"""Example code for duplicates_remover.py with tiny UI support"""
 import os
 import tkinter as tk
 from tkinter import filedialog
@@ -6,13 +7,13 @@ from duplicates_remover import DuplicatesRemover
 from logger import logger
 
 
-def choose_directory(label_text, init_dir=None):
+def choose_directory(label_text, init_dir=None):  # pragma: no cover
     directory = filedialog.askdirectory(title=label_text,
                                         initialdir=init_dir)
     return directory
 
 
-def main():
+def main():  # pragma: no cover
     root = tk.Tk()
     root.withdraw()
 
@@ -29,5 +30,5 @@ def main():
                 f"deleted: {result.get('deleted')})")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

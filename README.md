@@ -1,3 +1,5 @@
+[![Quality Gate Status](http://localhost:9000/api/project_badges/measure?project=sonar-test&metric=alert_status&token=sqb_82666105968264bd0864795f0b92b9e013dff951)](http://localhost:9000/dashboard?id=sonar-test)
+
 # Duplicates Remover
 
 Application with tiny UI for removing duplicates. Class `DuplicatesRemover` from `duplicates_remover.py` can be used without UI.
